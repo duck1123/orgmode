@@ -60,7 +60,7 @@
              :hour h
              :minute m}
       (and Eh Em) (merge {:end-hour Eh :end-minute Em})
-      :always or)))
+      :always identity)))
 
 (def ts-inactive-re
   (re-pattern (str "\\[" ts-base "\\]")))

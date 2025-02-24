@@ -3,9 +3,8 @@
 ;; Functions to facilitate HTML output
 
 (ns orgmode.html
-  (:require [hiccup.core :only [html]]
-            [clojure.walk :as w]
-            [clojure.string :as t])
+  (:require [clojure.string :as t]
+            [hiccup.core])
   (:import [org.apache.commons.lang3 StringEscapeUtils]))
 
 ;; ### Helping Items
@@ -16,7 +15,7 @@
 (def ^:dynamic *user-src-fn*
   "User-defined function to use for SRC blocks of code. This
   function will be called with the SRC block map passed in."
-  (fn [x] nil))
+  (fn [_x] nil))
 
 (defn squish-seq
   "For any consecutive sequences, merge them into one."

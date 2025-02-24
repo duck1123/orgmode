@@ -5,8 +5,8 @@
 
 (ns orgmode.block
   (:require [clojure.string :as s]
-            [clojure.zip :as zip])
-  (:use [orgmode.inline]))
+            [clojure.zip :as zip]
+            [orgmode.inline :as inline]))
 
 ;; ### Regular Expressions for Block Elements
 ;;
@@ -195,7 +195,7 @@
 
 (defn parse-plain-list
   "Parse a plain list, keeping track of any nested heirarchy."
-  ([[line & rest :as lines] z [_ lvl idx text :as params]]
+  ([[_line & _rest :as lines] z [_ lvl idx text :as params]]
    (let [level (+ (count lvl) (count idx))
          listtype (if (re-find #"^[0-9]+" idx) :ol :ul)]
      (if (= :list (:type (zip/node z)))
@@ -304,9 +304,10 @@
        z
        (orgmode.inline/parse-inline-elements line)))))
 
-(defn next-line [[line & rest] z]
+(defn next-line
   "Process each line with the list of block element parsers. Return
    the root of the created zipper structure"
+  [[line & rest] z]
   (handle-last-line
    [line z]
    (condp re-matches line

@@ -1,6 +1,6 @@
 (ns orgmode.core-test
   (:require [orgmode.core :as orgmode]
-            [midje.sweet :refer :all]))
+            [midje.sweet :refer [fact with-state-changes]]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Testing inlines
