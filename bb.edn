@@ -1,4 +1,35 @@
 {:tasks
- {kondo
+ {check
+  {:doc     "Check formatting of code"
+   :depends [cljfmt]}
+
+  ci-local
+  {:doc     "Run local validation checks"
+   :depends [lint test]}
+
+  clean
+  {:doc  "Remove generated resources"
+   :task (shell "rm -rf target")}
+
+  cljfmt
+  {:doc  "Check formatting of code using cljfmt"
+   :task (shell "clojure -M:cljfmt")}
+
+  format
+  {:doc  "Fix all formatting errors"
+   :task (shell "clojure -M:cljfmt/fix")}
+
+  kondo
   {:doc  "Validate code with kondo"
-   :task (shell "clojure -M:kondo src test")}}}
+   :task (shell "clojure -M:kondo src test")}
+
+  lint
+  {:doc     "Check all code issues"
+   :depends [check validate]}
+
+  test
+  {:task (shell "lein midje")}
+
+  validate
+  {:doc     "Check for coding violations"
+   :depends [kondo]}}}
