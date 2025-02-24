@@ -145,7 +145,6 @@
   "Parse a property block, adding property keys and values until an
    end tag is encountered"
   ([[line & rest] z]
-   {:pre [(= :headline (-> z zip/node (:type)))]}
    (handle-last-line
     [line z]
     (if-let [[_ prop value]
