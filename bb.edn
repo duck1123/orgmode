@@ -1,0 +1,4 @@
+{:tasks
+ {kondo
+  {:doc  "Validate code with kondo"
+   :task (shell "clojure -M:kondo src test")}}}

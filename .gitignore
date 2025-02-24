@@ -5,9 +5,11 @@
 pom.xml
 *.jar
 *.class
+/.clj-kondo/.cache
 .lein-deps-sum
 .lein-failures
 .lein-plugins
+/.lsp/.cache
 *~
 .cpcache/*
   

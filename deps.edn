@@ -3,5 +3,10 @@
  {hiccup/hiccup {:mvn/version "1.0.5"}
   org.apache.commons/commons-lang3 {:mvn/version "3.11"}}
  :aliases
- {:dev {:extra-paths ["test"]
-        :extra-deps {midje/midje {:mvn/version "1.9.9"}}}}}
+ {:dev
+  {:extra-paths ["test"]
+   :extra-deps {midje/midje {:mvn/version "1.9.9"}}}
+
+  :kondo
+  {:extra-deps {clj-kondo/clj-kondo {:mvn/version "2024.11.14"}}
+   :main-opts  ["-m" "clj-kondo.main" "--lint" "src" "test"]}}}
