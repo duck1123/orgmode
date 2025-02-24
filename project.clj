@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [hiccup "1.0.5"]
                  [org.apache.commons/commons-lang3 "3.11"]]
-  :profiles {:dev {:dependencies [[midje "1.9.9"]]}})
+  :profiles {:dev {:dependencies [[midje "1.9.9"]]
+                   :plugins [[lein-midje "3.2.1"]]}})
