@@ -12,6 +12,6 @@
     (recur (zip/next
             (let [n (zip/node z)]
               (if (and (map? n)
-                         (= :link (:type n)))
+                       (= :link (:type n)))
                 (zip/edit z fix-link)
                 z))))))

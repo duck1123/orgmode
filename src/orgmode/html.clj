@@ -8,7 +8,6 @@
             [clojure.string :as t])
   (:import [org.apache.commons.lang3 StringEscapeUtils]))
 
-
 ;; ### Helping Items
 
 (def img-suffix-re
@@ -24,18 +23,18 @@
   [s]
   (letfn [(concat-seq ([] [])
             ([x y]
-               (vec
-                (if (seq? y)
-                  (concat x (squish-seq y))
-                  (into x [y])))))]
+             (vec
+              (if (seq? y)
+                (concat x (squish-seq y))
+                (into x [y])))))]
     (reduce concat-seq [] s)))
 
 (defn maybe-img
   ([url] (maybe-img url url))
   ([url alt]
-     (if (re-find img-suffix-re url)
-       [:figure [:img {:src url :alt alt}] (into [:figcaption] alt)]
-       (into [:a {:href url}] alt))))
+   (if (re-find img-suffix-re url)
+     [:figure [:img {:src url :alt alt}] (into [:figcaption] alt)]
+     (into [:a {:href url}] alt))))
 
 (defn elmtype [x]
   (if (map? x)
@@ -74,7 +73,7 @@
      (hiccupify (:content x))]))
 
 (defmethod hiccupify :root [x]
-  (into [:section {:id "root" } ] (hiccupify (:content x))))
+  (into [:section {:id "root"}] (hiccupify (:content x))))
 
 (defmethod hiccupify :list [x]
   (into [(:listtype x)] (hiccupify (:content x))))
@@ -99,7 +98,7 @@
 
 (defmethod hiccupify :link [x]
   (let [{:keys [uri content]} x]
-     (maybe-img uri content)))
+    (maybe-img uri content)))
 
 ;; TODO -- consider using :cite?
 (defmethod hiccupify :footnote-ref [x]
@@ -110,7 +109,7 @@
   (into [:a.footnote-def
          {:id (:id x)
           :href (str "#" (:id x))}]
-   (hiccupify (:content x))))
+        (hiccupify (:content x))))
 
 ;; TODO -- figure out timestamps
 
@@ -140,10 +139,10 @@
   [:a {:id (:id x) :href (str "#" (:id x))}])
 
 (defmethod hiccupify :p [x]
-   [:p (hiccupify (:content x))])
+  [:p (hiccupify (:content x))])
 
 (defmethod hiccupify :seq [x]
-        (map hiccupify x))
+  (map hiccupify x))
 
 (defmethod hiccupify :default [x]
   (str x "\n"))

@@ -14,7 +14,7 @@
 (defn link-create
   "Create hyperlink structures from a list of regex matches"
   [coll]
-  (for [[_ link text ] coll]
+  (for [[_ link text] coll]
     {:type :link
      :uri link
      :content [(or text link)]}))

@@ -42,7 +42,6 @@
    (binding [html/*user-src-fn* f]
      (convert r))))
 
-
 ;; ### Utilities
 ;;
 ;; The functions aid in the handling of the resulting tree from the

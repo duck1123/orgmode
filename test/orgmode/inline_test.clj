@@ -9,7 +9,7 @@
  (->> "1900-01-01 Mon 12:12" (re-seq sut/ts-base) first) =>
  ["1900-01-01 Mon 12:12" "1900" "01" "01" "Mon" "12" "12" "" nil nil]
 
- (->> "1900-01-01 Mon 12:00-13:15" (re-seq sut/ts-base) first ) =>
+ (->> "1900-01-01 Mon 12:00-13:15" (re-seq sut/ts-base) first) =>
  ["1900-01-01 Mon 12:00-13:15" "1900" "01" "01" "Mon" "12" "00" "-13:15" "13" "15"]
 
  (->>  "1900-01-01 Mon 12:00" (re-seq sut/ts-base) sut/ts-active-create first) =>
